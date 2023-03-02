@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "e262da8d-8f74-4190-8d84-20d1dee7aabd",
+		"name": "Webhook generator",
+		"description": "A simple collection to generate webhooksURL for a monitor of your collection\n\n---\n\n**NOTE**\n\nTo run this collection you will need the following environment variables\n\n\n\n---\n\n\n| key          | type   | description                                                                                                                    |\n|--------------|--------|--------------------------------------------------------------------------------------------------------------------------------|\n| command      | string | `command` is a string that contains the command that initiated the request from slack. Eg: `/cnb_init`                         |\n| text         | string | `text` contains the message that was send along side the command. Eg: in `/cnb_guess team` \"team\" would be the value of `text` |\n| response_url | string | `response_url` is the slack webhook where we send the response to each command.                                                |\n| user_name    | string | `user_name` is the slack username of the user. We are using it to identify players                                             |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25913653"
+	},
+	"item": [
+		{
+			"name": "https://petstore.swagger.io/v2/swagger.json",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"Created\");",
+							"});",
+							"pm.test(\"Status code name should have OK string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"Created\");",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{postman_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-Api-Key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/swagger.json",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"swagger.json"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
