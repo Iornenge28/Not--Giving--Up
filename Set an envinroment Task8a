@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "e262da8d-8f74-4190-8d84-20d1dee7aabd",
+		"name": "Webhook generator",
+		"description": "A simple collection to generate webhooksURL for a monitor of your collection\n\n---\n\n**NOTE**\n\nTo run this collection you will need the following environment variables\n\n\n\n---\n\n\n| key          | type   | description                                                                                                                    |\n|--------------|--------|--------------------------------------------------------------------------------------------------------------------------------|\n| command      | string | `command` is a string that contains the command that initiated the request from slack. Eg: `/cnb_init`                         |\n| text         | string | `text` contains the message that was send along side the command. Eg: in `/cnb_guess team` \"team\" would be the value of `text` |\n| response_url | string | `response_url` is the slack webhook where we send the response to each command.                                                |\n| user_name    | string | `user_name` is the slack username of the user. We are using it to identify players                                             |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25913653"
+	},
+	"item": [
+		{
+			"name": "https://petstore.swagger.io/v2/swagger.json",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(100);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData.tags[1].name)\r",
+							"pm.environment.set(\"tag1name\", \"jsonData.tags[1].name\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}",
+					"host": [
+						"{{baseUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
