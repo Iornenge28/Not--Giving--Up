@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "e32dd632-9f22-4810-bbf4-293739f6df39",
+		"name": "David's Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25913653"
+	},
+	"item": [
+		{
+			"name": "About Postman",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status codename should have OK string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData.tags[0].name)\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(100);\r",
+							"});\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"name\", jsonData.tags[2].name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}?name={{name}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrlpush",
+			"value": "https://api.postman.com/collections/3865219-4c03efcb-f082-448a-a23a-59efc623ef2f?access_key=PMAT-01GQWQGADXMDDVQ0XJXFA35MSW"
+		}
+	]
+}
