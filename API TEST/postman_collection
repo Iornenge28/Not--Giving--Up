@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "c6554a56-c836-4314-bf66-ffb8a58429e0",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25913653"
+	},
+	"item": [
+		{
+			"name": "https://petstore.swagger.io/v2/swagger.json",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be  200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    pm.test(\"Status code name has OK string\", function () {\r",
+							"        pm.response.to.have.status(\"OK\");\r",
+							"    });\r",
+							"});var jsonData = pm.response.json();\r",
+							"console.log(jsonData.info.title)\r",
+							"    pm.test(\"cunfirm that the title is Swagger Petstore\", function () {\r",
+							"    pm.expect(jsonData.info.title).to.eql(\"Swagger Petstore\");\r",
+							"});\r",
+							"\r",
+							"//pm.test(\"Body is correct\", function () {\r",
+							"    //pm.response.to.have.body(\"response_body_string\");\r",
+							"//});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Swagger Petstore\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/swagger.json",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"swagger.json"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v2/swagger.json"
+		}
+	]
+}
